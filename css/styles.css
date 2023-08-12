@@ -5,8 +5,14 @@
     height: 600px;
     border-right: 1px solid;
     border-bottom: 1px solid;
+    margin: auto;
 }
 .grid div{
     border-top: 1px solid;
     border-left: 1px solid;
+}
+.range-slider{
+    display: flex;
+    flex-direction: column;
+    width: 128px;
 }

@@ -3,6 +3,7 @@ let cellSize;
 let cellHeight;
 let cellWidth;
 let cellFactor;
+let gridSize;
 let gridWidth = 600; //width and height are same. Width used interchangeably
 
 function createGrid(size){
@@ -12,9 +13,20 @@ function createGrid(size){
         const block = document.createElement('div');
         block.classList.add('block');
         block.style.width = cellWidth -1 + 'px';
-        block.style.width = cellHeight -1 + 'px';
+        block.style.height = cellHeight -1 + 'px';
         gridMap.appendChild(block);
     }
+}
+
+function removeDivs(){
+    gridMap.textContent='';
+}
+
+function rangeSlider(){
+    removeDivs();
+    gridSize = document.getElementById('cell-number').value;
+    createGrid(gridSize);
+    document.getElementById('range-text').textContent = gridSize;
 }
 
 function getWidth(size){ //determines width of each cell 
