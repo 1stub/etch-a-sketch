@@ -22,13 +22,6 @@ function removeDivs(){
     gridMap.textContent='';
 }
 
-function rangeSlider(){
-    removeDivs();
-    gridSize = document.getElementById('cell-number').value;
-    createGrid(gridSize);
-    document.getElementById('range-text').textContent = gridSize;
-}
-
 function getWidth(size){ //determines width of each cell 
     let newSize = size * size;
     cellFactor = gridWidth / newSize;
@@ -37,3 +30,37 @@ function getWidth(size){ //determines width of each cell
 }
 
 createGrid(16);
+cellColoring();
+
+function cellColoring(){ //https://stackoverflow.com/questions/75142612/make-the-background-color-of-div-change-when-the-mouse-is-down-and-hovering
+    const colorCell = Array.from(document.getElementsByClassName('block'));
+    let flag = false;
+
+    window.onmouseup = function(){
+        flag = false;
+    };
+
+    colorCell.forEach(cell =>{
+        cell.onmouseover = () => {if(flag) cell.style.backgroundColor='#000000';}
+        cell.onmousedown = () => {cell.style.backgroundColor='#000000'; flag=true; }
+    });
+}
+
+function rangeSlider(){
+    removeDivs();
+    gridSize = document.getElementById('cell-number').value;
+    createGrid(gridSize);
+    cellColoring();
+    document.getElementById('range-text').textContent = gridSize;
+}
+
+/*window.onload = function() {
+    const colorCell = document.querySelectorAll('.block');
+    let colorCellArray = Array.prototype.slice.call(colorCell);
+
+    colorCellArray.forEach(function(elem){
+        elem.addEventListener('mousedown', function() {
+            this.style.backgroundColor = '#000000';
+        });
+    });
+}*/
