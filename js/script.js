@@ -13,8 +13,8 @@ function createGrid(size){
     for(let i = 0; i < size; i++){
         const block = document.createElement('div');
         block.classList.add('block');
-        block.style.width = cellWidth -1 + 'px';
-        block.style.height = cellHeight -1 + 'px';
+        block.style.width = cellWidth - 1 + 'px';
+        block.style.height = cellHeight - 1 + 'px';
         gridMap.appendChild(block);
     }
 }
@@ -52,7 +52,7 @@ function rangeSlider(){
     gridSize = document.getElementById('cell-number').value;
     createGrid(gridSize);
     cellColoring();
-    document.getElementById('range-text').textContent = gridSize;
+    document.getElementById('range-text').textContent = `${gridSize} x ${gridSize}`;
     return gridSize;
 }
 
