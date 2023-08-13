@@ -1,4 +1,5 @@
 const gridMap = document.querySelector('.grid');
+const clear = document.querySelector('#clear');
 let cellSize;
 let cellHeight;
 let cellWidth;
@@ -42,7 +43,7 @@ function cellColoring(){ //https://stackoverflow.com/questions/75142612/make-the
 
     colorCell.forEach(cell =>{
         cell.onmouseover = () => {if(flag) cell.style.backgroundColor='#000000';}
-        cell.onmousedown = () => {cell.style.backgroundColor='#000000'; flag=true; }
+        cell.onmousedown = () => {cell.style.backgroundColor='#000000'; flag=true; } //ensures moveover event changes background color also
     });
 }
 
@@ -52,7 +53,15 @@ function rangeSlider(){
     createGrid(gridSize);
     cellColoring();
     document.getElementById('range-text').textContent = gridSize;
+    return gridSize;
 }
+
+const slider = document.querySelector('#cell-number')
+slider.addEventListener('input', rangeSlider)
+
+clear.addEventListener('click', () =>{
+    rangeSlider();
+});
 
 /*window.onload = function() {
     const colorCell = document.querySelectorAll('.block');
