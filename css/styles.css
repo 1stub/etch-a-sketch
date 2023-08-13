@@ -21,14 +21,21 @@
     flex-direction: column;
     width: 128px;
     align-self: flex-end;
+    margin-left: -7%;
+    gap: 12px;
 }
 .maincontainer{
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    position: relative;
+    gap: 20px;
 }
 .block{
     user-select: none; /*prevents cells from being dragable*/
+}
+.center-container {
+    display: flex;
+    align-items: center;
 }

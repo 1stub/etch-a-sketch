@@ -31,9 +31,9 @@ function getWidth(size){ //determines width of each cell
 }
 
 createGrid(16);
-cellColoring();
+cellColoring('#000000');
 
-function cellColoring(){ //https://stackoverflow.com/questions/75142612/make-the-background-color-of-div-change-when-the-mouse-is-down-and-hovering
+function cellColoring(color){ //https://stackoverflow.com/questions/75142612/make-the-background-color-of-div-change-when-the-mouse-is-down-and-hovering
     const colorCell = Array.from(document.getElementsByClassName('block'));
     let flag = false;
 
@@ -42,8 +42,8 @@ function cellColoring(){ //https://stackoverflow.com/questions/75142612/make-the
     };
 
     colorCell.forEach(cell =>{
-        cell.onmouseover = () => {if(flag) cell.style.backgroundColor='#000000';}
-        cell.onmousedown = () => {cell.style.backgroundColor='#000000'; flag=true; } //ensures moveover event changes background color also
+        cell.onmouseover = () => {if(flag) cell.style.backgroundColor=color;}
+        cell.onmousedown = () => {cell.style.backgroundColor=color; flag=true; } //ensures moveover event changes background color also
     });
 }
 
@@ -51,7 +51,7 @@ function rangeSlider(){
     removeDivs();
     gridSize = document.getElementById('cell-number').value;
     createGrid(gridSize);
-    cellColoring();
+    cellColoring('#000000');
     document.getElementById('range-text').textContent = `${gridSize} x ${gridSize}`;
     return gridSize;
 }
