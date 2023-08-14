@@ -1,11 +1,33 @@
 const gridMap = document.querySelector('.grid');
 const clear = document.querySelector('#clear');
+const RBG = document.querySelector('#rgb');
+const black = document.querySelector('#black');
+let cellColor;
 let cellSize;
 let cellHeight;
 let cellWidth;
 let cellFactor;
 let gridSize;
 let gridWidth = 600; //width and height are same. Width used interchangeably
+
+//I am leaving this code very scuffed for now in order to work on other projects. Will come back
+
+RBG.addEventListener('click', () =>{
+    cellColoring(getRandomColor());
+});
+
+black.addEventListener('click', () =>{
+    cellColoring('#000000');
+})
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
 function createGrid(size){
     getWidth(size);
@@ -51,7 +73,7 @@ function rangeSlider(){
     removeDivs();
     gridSize = document.getElementById('cell-number').value;
     createGrid(gridSize);
-    cellColoring('#000000');
+    cellColoring(cellColor);
     document.getElementById('range-text').textContent = `${gridSize} x ${gridSize}`;
     return gridSize;
 }
@@ -61,6 +83,7 @@ slider.addEventListener('input', rangeSlider)
 
 clear.addEventListener('click', () =>{
     rangeSlider();
+    cellColoring('#000000');
 });
 
 /*window.onload = function() {
